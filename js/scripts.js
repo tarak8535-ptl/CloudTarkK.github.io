@@ -1,30 +1,21 @@
 /*!
-* Start Bootstrap - Creative v7.0.7 (https://startbootstrap.com/theme/creative)
-* Copyright 2013-2023 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-creative/blob/master/LICENSE)
+* CloudTarkK Website Scripts
 */
-//
-// Scripts
-// 
 
-window.addEventListener('DOMContentLoaded', event => {
-
+// Navbar scroll behavior
+window.addEventListener('DOMContentLoaded', () => {
     // Navbar shrink function
-    var navbarShrink = function () {
-        const navbarCollapsible = document.body.querySelector('#mainNav');
-        if (!navbarCollapsible) {
+    const navbarShrink = function () {
+        const navbarCollapse = document.body.querySelector('#mainNav');
+        if (!navbarCollapse) {
             return;
         }
         if (window.scrollY === 0) {
-            navbarCollapsible.classList.remove('navbar-shrink')
+            navbarCollapse.classList.remove('navbar-scrolled');
         } else {
-            navbarCollapsible.classList.add('navbar-shrink')
+            navbarCollapse.classList.add('navbar-scrolled');
         }
-
     };
-
-    // Shrink the navbar 
-    navbarShrink();
 
     // Shrink the navbar when page is scrolled
     document.addEventListener('scroll', navbarShrink);
@@ -36,7 +27,7 @@ window.addEventListener('DOMContentLoaded', event => {
             target: '#mainNav',
             rootMargin: '0px 0px -40%',
         });
-    };
+    }
 
     // Collapse responsive navbar when toggler is visible
     const navbarToggler = document.body.querySelector('.navbar-toggler');
@@ -51,46 +42,44 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
-    // Activate SimpleLightbox plugin for portfolio items
-    new SimpleLightbox({
-        elements: '#portfolio a.portfolio-box'
+    // Initialize AOS animations
+    AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true
     });
 
+    // Update copyright year
+    const yearElement = document.getElementById('current-year');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
 });
 
-// LinkedIn Integration Functions
-function initLinkedInIntegration() {
-    // LinkedIn profile URL
-    const linkedinProfileUrl = 'https://www.linkedin.com/in/rushi-patel-888440166/';
-    
-    // Update LinkedIn profile links
-    const linkedinElements = document.querySelectorAll('.linkedin-profile-link');
-    linkedinElements.forEach(element => {
-        element.href = linkedinProfileUrl;
-    });
-    
-    // Update last refreshed timestamp
-    const lastUpdatedElements = document.querySelectorAll('.profile-last-updated');
-    const currentDate = new Date();
-    lastUpdatedElements.forEach(element => {
-        element.textContent = `Profile last updated: ${currentDate.toLocaleDateString()}`;
-    });
-    
-    // Add LinkedIn endorsement badges if they exist
-    const endorsementContainer = document.getElementById('linkedin-endorsements');
-    if (endorsementContainer) {
-        const skills = ['AWS', 'Cloud Security', 'DevOps', 'Terraform', 'Jenkins', 'Python'];
-        let endorsementHTML = '';
-        
-        skills.forEach(skill => {
-            endorsementHTML += `<span class="endorsement-badge">${skill}</span> `;
-        });
-        
-        endorsementContainer.innerHTML = endorsementHTML;
-    }
-}
-
-// Initialize LinkedIn integration when page loads
+// Form submission handling
 document.addEventListener('DOMContentLoaded', function() {
-    initLinkedInIntegration();
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const company = document.getElementById('company').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            // Simple validation
+            if (!name || !email || !message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Here you would typically send the form data to a server
+            // For now, we'll just show a success message
+            alert('Thank you for your message! We will get back to you soon.');
+            contactForm.reset();
+        });
+    }
 });

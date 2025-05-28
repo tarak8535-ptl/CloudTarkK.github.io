@@ -1,0 +1,121 @@
+/* Dark Purple Theme CSS */
+:root {
+  --primary-color: #8a2be2; /* Purple */
+  --secondary-color: #6a0dad; /* Darker Purple */
+  --dark-color: #121212; /* Very Dark Gray (almost black) */
+  --light-color: #1e1e1e; /* Dark Gray for cards */
+  --text-color: #e0e0e0; /* Light Gray for text */
+  --text-muted: #a0a0a0; /* Medium Gray for muted text */
+}
+
+body {
+  background-color: var(--dark-color);
+  color: var(--text-color);
+}
+
+#mainNav {
+  background-color: rgba(18, 18, 18, 0.9);
+}
+
+#mainNav .navbar-brand {
+  color: var(--text-color);
+}
+
+#mainNav .navbar-nav .nav-item .nav-link {
+  color: var(--text-muted);
+}
+
+#mainNav .navbar-nav .nav-item .nav-link:hover,
+#mainNav .navbar-nav .nav-item .nav-link:active,
+#mainNav .navbar-nav .nav-item .nav-link.active {
+  color: var(--primary-color) !important;
+}
+
+.navbar-toggler-icon {
+  filter: invert(1);
+}
+
+.card {
+  background-color: var(--light-color);
+  border: 1px solid rgba(138, 43, 226, 0.2);
+}
+
+.card:hover {
+  box-shadow: 0 10px 20px rgba(138, 43, 226, 0.3);
+  border-color: var(--primary-color);
+}
+
+.card-title {
+  color: var(--text-color);
+}
+
+.card-subtitle, .text-muted {
+  color: var(--text-muted) !important;
+}
+
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+.text-highlight {
+  color: var(--primary-color);
+}
+
+hr.divider {
+  border-color: var(--primary-color);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.btn-light {
+  color: var(--text-color);
+  background-color: rgba(138, 43, 226, 0.2);
+  border-color: var(--primary-color);
+}
+
+.btn-light:hover {
+  color: var(--text-color);
+  background-color: rgba(138, 43, 226, 0.4);
+}
+
+.skill-badge, .intro-tag {
+  background-color: rgba(138, 43, 226, 0.2);
+  color: var(--primary-color);
+}
+
+.bg-light {
+  background-color: var(--light-color) !important;
+}
+
+.tech-icon {
+  color: rgba(138, 43, 226, 0.2);
+}
+
+footer {
+  background-color: var(--light-color) !important;
+}
+
+.form-control, .form-select {
+  background-color: rgba(30, 30, 30, 0.8);
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  color: var(--text-color);
+}
+
+.form-control:focus, .form-select:focus {
+  background-color: rgba(30, 30, 30, 0.9);
+  border-color: var(--primary-color);
+  color: var(--text-color);
+  box-shadow: 0 0 0 0.25rem rgba(138, 43, 226, 0.25);
+}
+
+.form-floating label {
+  color: var(--text-muted);
+}
